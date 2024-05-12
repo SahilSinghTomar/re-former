@@ -1,0 +1,33 @@
+<%= form_with(model: @user, url: user_path, method: :patch) do |form| %>
+
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+            <ul>
+            <% @user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+  <div>
+    <%= form.label :username, "Username:" %>
+    <%= form.text_field :username, id: "user_name" %>
+  </div>
+
+  <div>
+    <%= form.label :email, "Email:" %>
+    <%= form.text_field :email, id: "user_email" %>
+  </div>
+
+  <div>
+    <%= form.label :password, "Password:" %>
+    <%= form.password_field :password, id: "user_password" %>
+  </div>
+
+  <div>
+    <%= form.submit "Update User" %>
+  </div>
+
+<% end %>
